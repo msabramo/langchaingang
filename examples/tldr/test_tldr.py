@@ -2,10 +2,10 @@
 """
 Basic tests for the tldr script to ensure it functions correctly.
 """
+import os
 import subprocess
 import sys
 import tempfile
-import os
 from pathlib import Path
 
 
