@@ -78,7 +78,9 @@ def get_chat_model(provider_name: str, **kwargs: Any) -> BaseChatModel:
     >>> get_chat_model(provider_name="azure_openai", model="gpt-4o-mini")
     <langchain_openai.AzureChatOpenAI object at 0x7f8b4c177790>
 
-    >>> get_chat_model(provider_name="bedrock", model="meta.llama3-2-70b-instruct-v1:0")
+    >>> get_chat_model(
+    ...     provider_name="bedrock", model="meta.llama3-2-70b-instruct-v1:0"
+    ... )
     <langchain_aws.ChatBedrock object at 0x7f8b4c177790>
 
     >>> get_chat_model(provider_name="vertex", model="gemini-2.0-flash-001")

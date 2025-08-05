@@ -28,7 +28,8 @@ def test_get_provider_list():
         "anthropic",
         "ollama",
     }
-    # Some might be missing due to import errors, but the list should be a subset
+    # Some might be missing due to import errors, but the list should be a
+    # subset
     assert set(provider_list).issubset(expected_providers)
 
 
