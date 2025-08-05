@@ -141,7 +141,7 @@ reportMissingTypeStubs = false
 
 [tool.uv.workspace]
 members = [
-    "foobar",
+    "examples/tldr",
 ]
 
 [dependency-groups]

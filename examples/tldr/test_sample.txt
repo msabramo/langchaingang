@@ -1,0 +1,11 @@
+The History of Artificial Intelligence
+
+Artificial intelligence (AI) has been a subject of fascination and research for decades. The field began in earnest in the 1950s when computer scientists started exploring whether machines could be made to think like humans.
+
+Early pioneers like Alan Turing proposed the famous Turing Test as a way to measure machine intelligence. In 1956, the Dartmouth Conference is often cited as the birth of AI as a formal academic discipline.
+
+Throughout the 1960s and 1970s, researchers developed various approaches to AI, including symbolic reasoning and expert systems. However, the field experienced several "AI winters" - periods of reduced funding and interest due to overpromising and underdelivering on capabilities.
+
+The 1980s saw a resurgence with expert systems, and the 1990s brought machine learning to the forefront. The 2000s introduced more sophisticated algorithms and the 2010s ushered in the era of deep learning.
+
+Today, AI is ubiquitous in our daily lives, powering everything from search engines to recommendation systems to autonomous vehicles. The field continues to evolve rapidly with new breakthroughs in natural language processing, computer vision, and general artificial intelligence.
