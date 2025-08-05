@@ -61,7 +61,7 @@ if args.env_file:
 if args.filename_or_url.startswith(("http://", "https://")):
     # Read from URL
     with urllib.request.urlopen(args.filename_or_url) as response:
-        document = response.read().decode('utf-8')
+        document = response.read().decode("utf-8")
 else:
     # Read from file
     with open(args.filename_or_url, "r") as f:
@@ -69,7 +69,9 @@ else:
 
 # Check if any providers are available
 if not provider_list:
-    raise RuntimeError("No LLM providers are available. Please check your dependencies.")
+    raise RuntimeError(
+        "No LLM providers are available. Please check your dependencies."
+    )
 
 # Create LLM using the chat model factory
 llm = get_chat_model(
@@ -79,9 +81,9 @@ llm = get_chat_model(
 )
 
 # Create a prompt template
-prompt = ChatPromptTemplate.from_messages([
-    ("user", "Please summarize this document in a single sentence:\n\n{document}")
-])
+prompt = ChatPromptTemplate.from_messages(
+    [("user", "Please summarize this document in a single sentence:\n\n{document}")]
+)
 
 # Create the chain
 chain = prompt | llm | StrOutputParser()
