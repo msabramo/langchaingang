@@ -26,6 +26,7 @@ def test_register_decorator():
     
     assert len(provider._provider_info_funcs_list) == 1
     assert provider._provider_info_funcs_list[0] == test_provider
+    assert provider.get_list() == ["test_provider"]
 
 
 def test_get_list():
