@@ -1,5 +1,7 @@
 # LangChainGang
 
+[![Tests](https://github.com/msabramo/langchaingang/workflows/Tests/badge.svg)](https://github.com/msabramo/langchaingang/actions?query=workflow%3ATests)
+
 A unified interface for LangChain chat model providers that simplifies working with multiple LLM providers.
 
 ## Features
