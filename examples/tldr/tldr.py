@@ -22,8 +22,8 @@ import argparse
 import urllib.request
 
 from dotenv import load_dotenv
-from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
 
 # Import our chat model factory
 from langchaingang import get_chat_model, get_provider_list
