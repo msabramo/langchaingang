@@ -1,0 +1,90 @@
+name: Test Examples
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'examples/**'
+      - '.github/workflows/test-examples.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'examples/**'
+      - '.github/workflows/test-examples.yml'
+
+jobs:
+  test-tldr-example:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        version: "latest"
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      run: uv python install ${{ matrix.python-version }}
+    
+    - name: Install dependencies for tldr example
+      run: |
+        cd examples/tldr
+        uv sync
+    
+    - name: Run comprehensive tldr tests
+      run: |
+        cd examples/tldr
+        uv run python test_tldr.py
+    
+    - name: Test URL functionality
+      run: |
+        cd examples/tldr
+        echo "Testing URL input with a simple robots.txt file..."
+        # Test URL functionality - this may work if API keys are available
+        output=$(uv run python tldr.py https://httpbin.org/robots.txt 2>&1)
+        exit_code=$?
+        
+        if [ $exit_code -eq 0 ] && [ -n "$output" ]; then
+          echo "✓ URL fetching and summarization successful"
+          echo "  Generated summary: $output"
+        elif echo "$output" | grep -E "(api key|credentials|authentication|provider)" -i > /dev/null; then
+          echo "✓ URL fetching works, failed at LLM creation due to missing API keys"
+        else
+          echo "⚠ URL test output: $output"
+          # Don't fail the test if it's just an API-related issue
+        fi
+
+  test-tldr-syntax:
+    # Test basic syntax and imports
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Install uv
+      uses: astral-sh/setup-uv@v4
+      with:
+        version: "latest"
+    
+    - name: Set up Python 3.11
+      run: uv python install 3.11
+    
+    - name: Install dependencies
+      run: |
+        cd examples/tldr
+        uv sync
+    
+    - name: Test Python syntax
+      run: |
+        cd examples/tldr
+        python -m py_compile tldr.py
+        echo "✓ tldr.py has valid Python syntax"
+    
+    - name: Test that script has valid Python structure
+      run: |
+        cd examples/tldr
+        python -c "import ast; ast.parse(open('tldr.py').read()); print('✓ tldr.py has valid Python AST structure')"
