@@ -69,7 +69,7 @@ jobs:
     
     - name: Install minimal dependencies
       run: |
-        uv sync --dev --no-optional
+        uv sync --dev
         uv pip install -e .
     
     - name: Run tests with minimal dependencies
