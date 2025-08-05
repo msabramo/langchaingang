@@ -1,13 +1,12 @@
 """Tests for the provider module."""
 
-import pytest
+from unittest.mock import Mock
+
 from langchaingang import provider
 
 
 def test_info_dataclass():
     """Test the Info dataclass."""
-    from unittest.mock import Mock
-    
     mock_model_type = Mock()
     info = provider.Info(provider_name="test", model_type=mock_model_type)
     
@@ -23,7 +22,6 @@ def test_register_decorator():
     
     @provider.register
     def test_provider():
-        from unittest.mock import Mock
         return provider.Info(provider_name="test_provider", model_type=Mock())
     
     assert len(provider._provider_info_funcs_list) == 1
@@ -38,12 +36,10 @@ def test_get_list():
     
     @provider.register
     def test_provider1():
-        from unittest.mock import Mock
         return provider.Info(provider_name="test1", model_type=Mock())
     
     @provider.register
     def test_provider2():
-        from unittest.mock import Mock
         return provider.Info(provider_name="test2", model_type=Mock())
     
     provider_list = provider.get_list()
@@ -60,7 +56,6 @@ def test_is_supported():
     
     @provider.register
     def test_provider():
-        from unittest.mock import Mock
         return provider.Info(provider_name="supported_provider", model_type=Mock())
     
     assert provider.is_supported("supported_provider") is True
@@ -73,7 +68,6 @@ def test_get_chat_model_class():
     provider._provider_info_funcs_list.clear()
     provider._provider_dict.clear()
     
-    from unittest.mock import Mock
     mock_model_type = Mock()
     
     @provider.register
@@ -96,7 +90,6 @@ def test_import_error_handling():
     
     @provider.register
     def working_provider():
-        from unittest.mock import Mock
         return provider.Info(provider_name="working", model_type=Mock())
     
     # The failing provider should not appear in the list
