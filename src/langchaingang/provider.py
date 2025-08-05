@@ -39,12 +39,16 @@ def is_supported(provider_name: str) -> bool:
     return provider_name in _get_dict()
 
 
-def get_chat_model_class(provider_name: str) -> type[BaseChatModel]:
+def get_chat_model_class(provider_name: str) -> type[BaseChatModel] | None:
     """
     Get the LangChain chat model class for a given provider name.
+
+    Returns a subclass of `BaseChatModel` or `None` if the provider is not
+    supported.
     """
 
-    return _get_dict()[provider_name]
+    provider_dict = _get_dict()
+    return provider_dict.get(provider_name)
 
 
 def get_list() -> list[str]:
