@@ -23,6 +23,7 @@ keywords = ["langchain", "llm", "ai", "chat", "providers"]
 requires-python = ">=3.9"
 dependencies = [
     "langchain-core>=0.1.0",
+    "langchain-ollama>=0.1.0",
 ]
 
 [project.optional-dependencies]
@@ -30,12 +31,14 @@ openai = ["langchain-openai>=0.1.0"]
 anthropic = ["langchain-anthropic>=0.1.0"]
 aws = ["langchain-aws>=0.1.0"]
 google = ["langchain-google-vertexai>=0.1.0", "langchain-google-genai>=0.1.0"]
+ollama = ["langchain-ollama>=0.1.0"]
 all = [
     "langchain-openai>=0.1.0",
     "langchain-anthropic>=0.1.0",
     "langchain-aws>=0.1.0",
     "langchain-google-vertexai>=0.1.0",
     "langchain-google-genai>=0.1.0",
+    "langchain-ollama>=0.1.0",
 ]
 dev = [
     "pytest>=7.0.0",
@@ -108,6 +111,7 @@ module = [
     "langchain_aws.*",
     "langchain_google_vertexai.*",
     "langchain_google_genai.*",
+    "langchain_ollama.*",
 ]
 ignore_missing_imports = true
 

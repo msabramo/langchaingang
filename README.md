@@ -18,6 +18,7 @@ A unified interface for LangChain chat model providers that simplifies working w
 - **Google Vertex AI** (`vertex`) - `ChatVertexAI`
 - **Google Gemini** (`gemini`) - `ChatGoogleGenerativeAI`
 - **Anthropic** (`anthropic`) - `ChatAnthropic`
+- **Ollama** (`ollama`) - `ChatOllama`
 
 ## Installation
 
@@ -30,8 +31,20 @@ uv add langchaingang
 Install with specific provider support:
 
 ```bash
-# OpenAI support
+# OpenAI (and Azure OpenAI) support
 uv add "langchaingang[openai]"
+
+# AWS Bedrock support
+uv add "langchaingang[aws]"
+
+# Google Gemini and Vertex AI support
+uv add "langchaingang[google]"
+
+# Anthropic support
+uv add "langchaingang[anthropic]"
+
+# Ollama support
+uv add "langchaingang[ollama]"
 
 # Multiple providers
 uv add "langchaingang[openai,anthropic,aws]"
@@ -47,7 +60,7 @@ import langchaingang
 
 # List available providers
 providers = langchaingang.get_provider_list()
-print(providers)  # ['openai', 'anthropic', ...]
+print(providers)  # ['openai', 'anthropic', 'ollama', ...]
 
 # Get a chat model
 model = langchaingang.get_chat_model(
@@ -112,6 +125,16 @@ model = langchaingang.get_chat_model(
     provider_name="anthropic",
     model="claude-sonnet-4-0",
     api_key="your-anthropic-key"
+)
+```
+
+### Ollama
+
+```python
+model = langchaingang.get_chat_model(
+    provider_name="ollama",
+    model="llama3",
+    base_url="http://localhost:11434"  # Optional, defaults to localhost:11434
 )
 ```
 

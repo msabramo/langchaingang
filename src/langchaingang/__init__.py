@@ -47,10 +47,17 @@ def anthropic() -> provider.Info:
     return provider.Info(provider_name="anthropic", model_type=ChatAnthropic)
 
 
+@provider.register
+def ollama() -> provider.Info:
+    from langchain_ollama import ChatOllama
+
+    return provider.Info(provider_name="ollama", model_type=ChatOllama)
+
+
 def get_provider_list() -> list[str]:
     """
     Get a list of available provider names (e.g., 'openai', 'azure_openai',
-    'bedrock', 'vertex', 'gemini', 'anthropic').
+    'bedrock', 'vertex', 'gemini', 'anthropic', 'ollama').
     """
 
     return provider.get_list()
@@ -80,6 +87,9 @@ def get_chat_model(provider_name: str, **kwargs) -> BaseChatModel:
 
     >>> get_chat_model(provider_name="anthropic", model="claude-sonnet-4-0")
     <langchain_anthropic.ChatAnthropic object at 0x7f8b4c177790>
+
+    >>> get_chat_model(provider_name="ollama", model="llama3")
+    <langchain_ollama.ChatOllama object at 0x7f8b4c177790>
     """
 
     if not provider.is_supported(provider_name):
