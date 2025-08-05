@@ -12,12 +12,12 @@ A unified interface for LangChain chat model providers that simplifies working w
 
 ## Supported Providers
 
-- **OpenAI** (`openai`) - ChatOpenAI
-- **Azure OpenAI** (`azure_openai`) - AzureChatOpenAI  
-- **AWS Bedrock** (`bedrock`) - ChatBedrock
-- **Google Vertex AI** (`vertex`) - ChatVertexAI
-- **Google Gemini** (`gemini`) - ChatGoogleGenerativeAI
-- **Anthropic** (`anthropic`) - ChatAnthropic
+- **OpenAI** (`openai`) - `ChatOpenAI`
+- **Azure OpenAI** (`azure_openai`) - `AzureChatOpenAI`
+- **AWS Bedrock** (`bedrock`) - `ChatBedrock`
+- **Google Vertex AI** (`vertex`) - `ChatVertexAI`
+- **Google Gemini** (`gemini`) - `ChatGoogleGenerativeAI`
+- **Anthropic** (`anthropic`) - `ChatAnthropic`
 
 ## Installation
 
