@@ -1,3 +1,5 @@
+from typing import Any
+
 from langchain_core.language_models.chat_models import BaseChatModel
 
 from . import provider
@@ -63,7 +65,7 @@ def get_provider_list() -> list[str]:
     return provider.get_list()
 
 
-def get_chat_model(provider_name: str, **kwargs) -> BaseChatModel:
+def get_chat_model(provider_name: str, **kwargs: Any) -> BaseChatModel:
     """
     Factory function to return a LangChain-compatible chat model
     based on the provider name and configuration kwargs.
