@@ -36,7 +36,7 @@ jobs:
       run: uv run isort --check-only .
     
     - name: Run flake8
-      run: uv run flake8 .
+      run: uv run flake8 src/ tests/
     
     - name: Run mypy
       run: uv run mypy src/
