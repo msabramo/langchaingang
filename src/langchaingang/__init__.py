@@ -96,16 +96,9 @@ def get_chat_model(provider_name: str, **kwargs: Any) -> BaseChatModel:
     <langchain_ollama.ChatOllama object at 0x7f8b4c177790>
     """
 
-    if not provider.is_supported(provider_name):
-        raise ValueError(f"Unsupported provider: {provider_name}")
-
     chat_model_class = provider.get_chat_model_class(provider_name)
-
     if chat_model_class is None:
-        raise ImportError(
-            f"Provider '{provider_name}' is not available."
-            " Please install the required dependencies."
-        )
+        raise ValueError(f"Unsupported provider: {provider_name}")
 
     # Inject provider-specific defaults
     if provider_name == "bedrock":

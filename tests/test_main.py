@@ -41,17 +41,6 @@ def test_get_chat_model_unsupported_provider():
 
 @patch("langchaingang.provider.get_chat_model_class")
 @patch("langchaingang.provider.is_supported")
-def test_get_chat_model_import_error(mock_is_supported, mock_get_class):
-    """Test error handling when provider class is not available."""
-    mock_is_supported.return_value = True
-    mock_get_class.return_value = None
-
-    with pytest.raises(ImportError, match="Provider 'test_provider' is not available"):
-        langchaingang.get_chat_model("test_provider")
-
-
-@patch("langchaingang.provider.get_chat_model_class")
-@patch("langchaingang.provider.is_supported")
 def test_get_chat_model_bedrock_parameter_conversion(mock_is_supported, mock_get_class):
     """Test that Bedrock model parameter is converted to model_id."""
     mock_is_supported.return_value = True
