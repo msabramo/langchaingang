@@ -53,8 +53,8 @@ def get_list() -> list[str]:
 
 def _get_dict() -> dict[str, type[BaseChatModel]]:
     """
-    Get a dictionary that maps provider names to the corresponding types of their
-    LangChain chat model classes.
+    Get a dictionary that maps provider names to the corresponding types of
+    their LangChain chat model classes.
     """
 
     if _provider_dict:
